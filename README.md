@@ -804,7 +804,7 @@ local clrMainColor = Color() or Color(255, 255, 255) or Color(255, 255, 255, 255
 **color_t:SetAlpha(iAlpha) from 0 to 255**  
 **color_t:SetAlphaIncrement(flAlpha) from 0 to 1**  
 **color_t:Print(szSpacing)**  
-**color_t:toRGB() eventho is already rgb, it just returns itself**
+**color_t:toRGB() eventho is already rgb, it just returns itself**  
 **color_t:Lerp(anotherColor, fraction)**  
 
 **HSV**
