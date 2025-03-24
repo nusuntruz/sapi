@@ -1,5 +1,17 @@
 # sapi
 SeaSide Extended API
+Compatible with: gamesense, primordial
+Status: Unfinished
+
+# How to use
+Create a folder called "sapi" into the scripts directory
+Put all the files into the "sapi" directory
+**Note: In the case that the cheat has it s own seperate libraries folder, just do these steps into that**
+```lua
+require "sapi\\require.lua"
+
+-- put this in the first line after that you can use the api
+```
 
 <a name="-1"></a>
 
