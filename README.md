@@ -18,6 +18,8 @@ SeaSide Extended API
 |[Entity](#a)|
 |[Animate](#b)|
 |[json](#c)|
+|[Color](#d)|
+|[Vectors](#e)|
 
 ## <a name="0"></a>cheat
 **API**  
@@ -752,7 +754,7 @@ typedef struct {
 
 [back to Contents](#-1)
 
-## <a name="a"></b>Animate
+## <a name="b"></a>Animate
 **Init**
 ```lua
 local iAnimation = Animate.Init(szName, bEnabler, iMultiplyer, iDefault)
@@ -766,7 +768,7 @@ local iAnimation = Animate.Get(szName)
 
 [back to Contents](#-1)
 
-## <a name="a"></c>json
+## <a name="c"></a>json
 **encode**
 ```lua
 json.encode(lua_code)
@@ -776,3 +778,69 @@ json.encode(lua_code)
 ```lua
 local ret = json.decode(json_code)
 ```
+
+[back to Contents](#-1)
+
+## <a name="d"></a>Color
+**Color**
+```lua
+local clrMainColor = Color() or Color(255, 255, 255) or Color(255, 255, 255, 255)
+```
+**color_t:toHSV()**  
+**color_t:toHEX()**  
+**color_t:unpack()**  
+**color_t:SetAlpha(iAlpha) from 0 to 255**  
+**color_t:SetAlphaIncrement(flAlpha) from 0 to 1**  
+**color_t:Print(szSpacing)**  
+**color_t:toRGB() eventho is already rgb, it just returns itself**
+**color_t:Lerp(anotherColor, fraction)**  
+
+**HSV**
+```lua
+local clrMainColor = HSV(360, 1, 1)
+```
+**hsv_t:toRGB()**  
+**hsv_t:toHEX()**  
+**hsv_t:toHSV()**  
+**hsv_t:unpack()**  
+
+**HEX**
+```lua
+local clrMainColor = HEX("#FFFFFFFF") -- White
+```
+**hex_t:Get() returns string hex color**  
+**hex_t:toRGB()**  
+**hex_t:toHSV()**  
+**hex_t:toHEX()**  
+
+[back to Contents](#-1)
+
+## <a name="e"></a>Vectors
+**vec2_t**
+```lua
+local vecPosition2d = vec2_t(200, 200)
+-- World to Screen
+local vecWorldPositionOnScreen = vec2_t(200, 0, 150) or vec2_t(vec3_t(200, 0, 150))
+```
+
+**vec3_t**
+```lua
+local vecPosition3d = vec3_t(200, 0, 150)
+```
+
+**vector_data_t:ffi() get ffi vector**  
+**vector_data_t:Add(i)**  
+**vector_data_t:Sub(i)**  
+**vector_data_t:Multiply(i)**  
+**vector_data_t:Fraction(i)**  
+**vector_data_t:Dot(vector)**  
+**vector_data_t:Length()**  
+**vector_data_t:Length2d()**  
+**vector_data_t:Distance(distance)**  
+**vector_data_t:Angle(vector)**  
+**vector_data_t:unpack()**  
+**vector_data_t:Copy() or vector_data_t:copy()**  
+**vector_data_t:Hovered(dim)**  
+**vector_data_t:Drag(vec2d, m_szName, m_bShouldBlockDragging)**  
+
+[back to Contents](#-1)
