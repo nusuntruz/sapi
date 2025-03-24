@@ -575,7 +575,7 @@ Render.Polyline(vertices, clr)
 
 **SetClip**
 ```lua
-Render.SetClip(pos, size)
+Render.SetClip(pos, dim)
 ```
 
 **EndClip**
