@@ -35,6 +35,7 @@ Returns if the cheat menu is visible
 ```lua
 local bVisible = cheat.MenuVisible
 ```
+[back to Contents](#-1)
 
 ## <a name="1"></a>Utils
 **CreateInterface**  
@@ -70,6 +71,7 @@ Utils.UnloadFunction(function()
   -- do something when the script is unloaded
 end)
 ```
+[back to Contents](#-1)
 
 ## <a name="2"></a>Hooks
 **Unload**
@@ -92,6 +94,7 @@ Hooks.CreateMove(function()
   -- do something on create move
 end)
 ```
+[back to Contents](#-1)
 
 ## <a name="3"></a>Input
 **IsKeyPressed**
@@ -249,6 +252,7 @@ local ButtonCode_t = ffi.typeof([[
     }
 ]])
 ```
+[back to Contents](#-1)
 
 ## <a name="4"></a>Console
 **Get**
@@ -285,6 +289,7 @@ cl_interp:SetFloat(1.0)
 ```lua
 con_filter_text:SetString("some string idk")
 ```
+[back to Contents](#-1)
 
 ## <a name="5"></a>Netgraph
 **Works only when netgraph is enabled**
@@ -314,6 +319,7 @@ typedef struct {
         unsigned long m_nNetGraphHeight;
 } CNetGraphPanel;
 ```
+[back to Contents](#-1)
 
 ## <a name="6"></a>Client
 ```lua
@@ -374,6 +380,7 @@ typedef struct {
         void* m_nEvents;
 } CClientState;
 ```
+[back to Contents](#-1)
 
 ## <a name="7"></a>Globals
 ```lua
@@ -402,6 +409,7 @@ typedef struct {
         int m_nTimestampRandomizeWindow;
 } CGlobalVarsBase;
 ```
+[back to Contents](#-1)
 
 ## <a name="8"></a>Engine
 **InGame**
@@ -497,6 +505,7 @@ typedef struct {
 ```lua
 local r_aspectratio = Engine.GetScreenAspectRatio(1920, 1080)
 ```
+[back to Contents](#-1)
 
 ## <a name="9"></a>Render
 **pos and dim are 2D Vectors**
@@ -621,3 +630,4 @@ Render.InitTextureRGBA(data_table, size_vector)
 ```lua
 Render.Image(datatbl, pos, dim, clr)
 ```
+[back to Contents](#-1)
