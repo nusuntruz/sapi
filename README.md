@@ -508,7 +508,7 @@ local r_aspectratio = Engine.GetScreenAspectRatio(1920, 1080)
 [back to Contents](#-1)
 
 ## <a name="9"></a>Render
-**pos and dim are 2D Vectors**
+**pos and dim are 2D Vectors**  
 **Every function in here works only on Hooks.Draw or any PaintTreverse Hook**
 
 **GetCursorPosition**
