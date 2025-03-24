@@ -15,6 +15,9 @@ SeaSide Extended API
 |[Globals](#7)|
 |[Engine](#8)|
 |[Render](#9)|
+|[Entity](#a)|
+|[Animate](#b)|
+|[json](#c)|
 
 ## <a name="0"></a>cheat
 **API**  
@@ -630,4 +633,146 @@ Render.InitTextureRGBA(data_table, size_vector)
 ```lua
 Render.Image(datatbl, pos, dim, clr)
 ```
+
+```lua
+RoundingFlags.CORNER_NONE
+RoundingFlags.CORNER_TOP_LEFT
+RoundingFlags.CORNER_TOP_RIGHT
+RoundingFlags.CORNER_BOTTOM_LEFT
+RoundingFlags.CORNER_BOTTOM_RIGHT
+RoundingFlags.CORNER_TOP
+RoundingFlags.CORNER_RIGHT
+RoundingFlags.CORNER_BOTTOM
+RoundingFlags.CORNER_LEFT
+RoundingFlags.CORNER_TOP_LEFT_BOTTOM_RIGHT
+RoundingFlags.CORNER_TOP_RIGHT_BOTTOM_LEFT
+RoundingFlags.CORNER_ALL -- or leave rounding flags empty, if it has set a rounding radius it will default to this
+```
+
 [back to Contents](#-1)
+
+## <a name="a"></a>Entity
+**GetLocalPlayer**
+```lua
+local iLocalPlayerIndex = Entity.GetLocalPlayer()
+```
+
+**Get**
+```lua
+local entEntity = Entity.Get(iIndex)
+```
+
+**GetHandle**
+```lua
+local entHandle = Entity.GetHandle(nHandle)
+```
+
+**CEntity:GetProp**
+```lua
+local iHealth = entEntity:GetProp("int", 0x100)
+```
+
+**CEntity:m_iHealth()**  
+**CEntity:m_iTeamNum()**  
+**CEntity:m_bDormant()**  
+**CEntity:m_fFlags()**  
+**CEntity:m_vecVelocity()**  
+**CEntity:m_flVelocity()**  
+**CEntity:m_flSimulationTime()**  
+**CEntity:m_flOldSimulationTime()**  
+**CEntity:m_flLowerBodyYawTarget()**  
+**CEntity:m_nPoseParameters()[iPose]**  
+**CEntity:m_nAnimationLayers()[iLayer]**  
+**CEntity:m_nAnimationState()**
+```cpp
+typedef struct {
+        void*       m_nEntity; // 0x60
+        void*       m_nActiveWeapon; // 0x64
+        void*       m_nLastActiveWeapon; // 0x68
+        float       m_flLastUpdateTime; // 0x6C
+        int         m_iLastUpdateFrame; // 0x70
+        float       m_flLastUpdateIncrement; // 0x74
+        float       m_flEyeYaw; // 0x78
+        float       m_flEyePitch; // 0x7C
+        float       m_flGoalFeetYaw; // 0x80
+        float       m_flLastFeetYaw; // 0x84
+        float       m_flMoveYaw; // 0x88
+        float       m_flLastMoveYaw; // 0x8C // changes when moving/jumping/hitting ground
+        float       m_flLeanAmount; // 0x90
+        float       m_flFeetCycle; // 0x98 0 to 1
+        float       m_flMoveWeight; // 0x9C 0 to 1
+        float       m_flMoveWeightSmoothed; // 0xA0
+        float       m_flDuckAmount; // 0xA4
+        float       m_flHitGroundCycle; // 0xA8
+        float       m_flRecrouchWeight; // 0xAC
+        vec3_t      m_vecOrigin; // 0xB0
+        vec3_t      m_vecLastOrigin;// 0xBC
+        vec3_t      m_vecVelocity; // 0xC8
+        vec3_t      m_vecVelocityNormalized; // 0xD4
+        vec3_t      m_vecVelocityNormalizedNonZero; // 0xE0
+        float       m_flVelocityLenght2D; // 0xEC
+        float       m_flJumpFallVelocity; // 0xF0
+        float       m_flSpeedNormalized; // 0xF4 // clamped velocity from 0 to 1
+        float       m_flRunningSpeed; // 0xF8
+        float       m_flDuckingSpeed; // 0xFC
+        float       m_flDurationMoving; // 0x100
+        float       m_flDurationStill; // 0x104
+        bool        m_bOnGround; // 0x108
+        bool        m_bHitGroundAnimation; // 0x109
+        float       m_flNextLowerBodyYawUpdateTime; // 0x10C
+        float       m_flDurationInAir; // 0x110
+        float       m_flLeftGroundHeight; // 0x114
+        float       m_flHitGroundWeight; // 0x118 // from 0 to 1, is 1 when standing
+        float       m_flWalkToRunTransition; // 0x11C // from 0 to 1, doesnt change when walking or crouching, only running
+        float       m_flAffectedFraction; // 0x124 // affected while jumping and running, or when just jumping, 0 to 1
+        float       m_flMinBodyYaw; // 0x330 + 0x4
+        float       m_flMaxBodyYaw; // 0x334 + 0x4
+        float       m_flMinPitch; //0x338 + 0x4
+        float       m_flMaxPitch; // 0x33C + 0x4
+        int         m_iAnimsetVersion; // 0x340 + 0x4
+} CCSGOPlayerAnimationState_t;
+
+typedef struct {
+        float   m_flAnimationTime;		
+        float   m_flFadeOutTime;	
+        int     m_iFlags;			
+        int     m_iActivity;			
+        int     m_iPriority;			
+        int     m_iOrder;			
+        int     m_iSequence;			
+        float   m_flPrevCycle;		
+        float   m_flWeight;			
+        float   m_flWeightDeltaRate;
+        float   m_flPlaybackRate;	
+        float   m_flCycle;			
+        void*   m_nOwner;			
+        int     m_iBits;				
+} C_AnimationLayer;
+```
+
+[back to Contents](#-1)
+
+## <a name="a"></b>Animate
+**Init**
+```lua
+local iAnimation = Animate.Init(szName, bEnabler, iMultiplyer, iDefault)
+```
+
+**Get**
+```lua
+-- if it was created previously
+local iAnimation = Animate.Get(szName)
+```
+
+[back to Contents](#-1)
+
+## <a name="a"></c>json
+**encode**
+```lua
+json.encode(lua_code)
+```
+
+**decode**
+```lua
+local ret = json.decode(json_code)
+```
